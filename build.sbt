@@ -3,7 +3,7 @@ name := "mockito-sweetener"
 
 organization := "com.github.jostly"
 
-version := "0.1.0"
+version := "0.1.1-SNAPSHOT"
 
 homepage := Some(url("https://github.com/jostly/mockito-sweetener"))
 
