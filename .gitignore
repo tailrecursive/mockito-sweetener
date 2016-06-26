@@ -1,0 +1,24 @@
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+
+# sbt specific
+.cache
+.lib/
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+
+# intellij
+*.eml
+*.ipr
+*.iws
+.*.sw?
+.idea
+project/project/
