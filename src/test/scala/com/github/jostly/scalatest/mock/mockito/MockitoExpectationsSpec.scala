@@ -95,6 +95,27 @@ class MockitoExpectationsSpec extends WordSpec with Matchers with MockitoSweeten
     }
   }
 
+  "a function value" when {
+    "it takes no parameters" should {
+      "have its return value properly mocked" in {
+        val fn = mock[() => Int]
+
+        fn() returns 17
+
+        fn() should be (17)
+      }
+    }
+    "it takes one parameters" should {
+      "have its return value properly mocked" in {
+        val fn = mock[(Int) => Int]
+
+        fn(0) returns 17
+
+        fn(0) should be (17)
+      }
+    }
+  }
+
   def matchAll[T](f: => T)(r: T*): Unit = {
     for ((v, i) <- r.zipWithIndex) {
       assert(f === v, s"Mismatch on response #${i + 1}")

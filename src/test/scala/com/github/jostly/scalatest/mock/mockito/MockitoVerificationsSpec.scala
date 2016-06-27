@@ -260,4 +260,15 @@ class MockitoVerificationsSpec extends WordSpec with Matchers with MockitoSweete
       }
     }
   }
+
+  "verifying calls to function mocks" when {
+    "a Function0" should {
+      val fn = mock[() => Int]
+
+      fn()
+      "verify calls" in {
+        there was one(fn)()
+      }
+    }
+  }
 }

@@ -8,7 +8,7 @@ import scala.reflect._
 
 trait MockitoMatchers {
 
-  def is[T](v: T) = M.eq(v)
+  def is[@specialized(Specializable.Primitives) T](v: T) = M.eq(v)
   def any[T : ClassTag]: T = M.argThat[T](new TypeMatcher[T])
 
   def anything[T] = M.any[T]
