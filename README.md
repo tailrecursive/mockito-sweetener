@@ -6,7 +6,25 @@ Inspired by the Mockito DSL in Specs2, adapted for use with ScalaTest
 
 ## Install
 
-...
+Available to download from [jCenter](https://bintray.com/bintray/jcenter?filterByPkgName=mockito-sweetener)
+
+SBT:
+
+```
+libraryDependencies ++= Seq (
+  "com.github.jostly" %% "mockito-sweetener" % "0.1.1"
+)
+```
+
+Maven:
+
+```
+<dependency>
+  <groupId>com.github.jostly</groupId>
+  <artifactId>mockito-sweetener_2.11</artifactId>
+  <version>0.1.1</version>
+</dependency>
+```
 
 ## Set up expectations
 
