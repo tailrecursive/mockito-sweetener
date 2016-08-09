@@ -13,6 +13,10 @@ class MockitoVerificationsSpec extends WordSpec with Matchers with MockitoSweete
     def second(i: Int, s: String): Unit
   }
 
+  trait GenericProbe[T] {
+    def generic: T
+  }
+
   "verifying calls to a method" when {
     "a single call was made" should {
       val probe = mock[Probe]
@@ -155,6 +159,10 @@ class MockitoVerificationsSpec extends WordSpec with Matchers with MockitoSweete
       }
       "verify no calls whatsoever" in {
         there were noCallsTo (probe)
+      }
+      "provide alias for mocks that conflict with scalatest Matchers (issue #2)" in {
+        val genProbe = mock[GenericProbe[Probe]]
+        there were zero (genProbe).generic
       }
     }
   }

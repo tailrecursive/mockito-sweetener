@@ -38,6 +38,7 @@ trait MockitoVerifications extends OrderedVerifications {
   def noMoreCallsTo(mock: AnyRef)(implicit order: Order = NoOrder) = verifyNoMoreInteractions(mock)(order)
 
   def no[T <: AnyRef](mock: T)(implicit order: Order = NoOrder) = verify(mock, M.never(), order)
+  def zero[T <: AnyRef](mock: T)(implicit order: Order = NoOrder) = verify(mock, M.never(), order)
   def one[T <: AnyRef](mock: T)(implicit order: Order = NoOrder) = verify(mock, M.times(1), order)
   def two[T <: AnyRef](mock: T)(implicit order: Order = NoOrder) = verify(mock, M.times(2), order)
   def three[T <: AnyRef](mock: T)(implicit order: Order = NoOrder) = verify(mock, M.times(3), order)
