@@ -12,7 +12,7 @@ SBT:
 
 ```
 libraryDependencies ++= Seq (
-  "com.github.jostly" %% "mockito-sweetener" % "0.1.1"
+  "com.github.jostly" %% "mockito-sweetener" % "0.1.2"
 )
 ```
 
@@ -22,7 +22,7 @@ Maven:
 <dependency>
   <groupId>com.github.jostly</groupId>
   <artifactId>mockito-sweetener_2.11</artifactId>
-  <version>0.1.1</version>
+  <version>0.1.2</version>
 </dependency>
 ```
 
@@ -46,6 +46,7 @@ val m = mock[List[Int]]
 m.length
 
 there was one(m).length
+there was zero(m).head
 ```
 
 ## Match arguments
