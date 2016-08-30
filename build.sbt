@@ -3,7 +3,7 @@ name := "mockito-sweetener"
 
 organization := "com.github.jostly"
 
-version := "0.1.3-SNAPSHOT"
+version := "0.2.0"
 
 homepage := Some(url("https://github.com/jostly/mockito-sweetener"))
 
@@ -26,7 +26,7 @@ scmInfo := Some(
 bintrayVcsUrl := Some("scm:git:git@github.com:jostly/mockito-sweetener.git")
 
 /* scala versions and options */
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 
 scalacOptions ++= Seq(
   "-deprecation",
@@ -42,10 +42,10 @@ scalacOptions ++= Seq(
 )
 
 libraryDependencies ++= Seq (
-  "org.scala-lang.modules" %% "scala-xml" % "1.0.2" withSources() withJavadoc(),
-  "org.scala-lang" % "scala-reflect" % scalaVersion.value withSources() withJavadoc(),
-  "org.scalatest" %% "scalatest" % "2.2.6" % "optional" withSources() withJavadoc(),
-  "org.mockito" % "mockito-all" % "1.9.0" % "optional" withSources() withJavadoc()
+  "org.scala-lang.modules" %% "scala-xml" % "1.0.5",
+  "org.scala-lang" % "scala-reflect" % scalaVersion.value,
+  "org.scalatest" %% "scalatest" % "3.0.0" % "optional",
+  "org.mockito" % "mockito-all" % "1.10.19" % "optional"
 )
 
 /* sbt behavior */

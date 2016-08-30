@@ -15,12 +15,10 @@ trait MockitoScalaTestMatcherAdapters {
   // Method signatures gently lifted from ScalaTest Matchers
 
   implicit def should[T : ClassTag, TC1[_]](factory: MatcherFactory1[T, TC1])(implicit tc1: TC1[T]): T = {
-    println(s"should1 factory=$factory")
     M.argThat[T](new WrappedScalaTestMatcher[T](factory.matcher))
   }
 
   implicit def should[T : ClassTag, TC1[_], TC2[_]](factory: MatcherFactory2[T, TC1, TC2])(implicit tc1: TC1[T], tc2: TC2[T]): T = {
-    println(s"should2 factory=$factory")
     M.argThat[T](new WrappedScalaTestMatcher[T](factory.matcher))
   }
 

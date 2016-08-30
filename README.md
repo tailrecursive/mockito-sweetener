@@ -12,7 +12,7 @@ SBT:
 
 ```
 libraryDependencies ++= Seq (
-  "com.github.jostly" %% "mockito-sweetener" % "0.1.2"
+  "com.github.jostly" %% "mockito-sweetener" % "0.2.0"
 )
 ```
 
@@ -22,7 +22,7 @@ Maven:
 <dependency>
   <groupId>com.github.jostly</groupId>
   <artifactId>mockito-sweetener_2.11</artifactId>
-  <version>0.1.2</version>
+  <version>0.2.0</version>
 </dependency>
 ```
 
@@ -102,3 +102,28 @@ matches, they can be used to set up more complex expectations easily:
 val m = mock[List[String]]
 m(be > 0 and be < 10) returns "Single digit"
 ```
+
+## Release notes
+
+### 0.2.0
+
+* Upgraded dependencies:
+    * ScalaTest `2.2.6` => `3.0.0` (motivating a minor version bump)
+    * Mockito `1.9.0` => `1.10.19`
+    * Scala XML `1.0.2` => `1.0.5`
+    * Scala `2.11.7` => `2.11.8`
+* Removed debug printouts
+* Slightly narrowed the specialization of `MockitoMatchers.is`
+
+## 0.1.2
+
+* Added `zero` as an alias for `no` in call number verifications
+  to fix a conflict with ScalaTest Matchers
+
+## 0.1.1
+
+* Added specialization where necessary to properly handle cases of matching / stubbing primitives
+
+## 0.1.0
+
+* Initial release
