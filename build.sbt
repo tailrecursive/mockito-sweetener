@@ -17,7 +17,6 @@ lazy val `mockito-sweetener` = (project in file(".")).
       "-Xlint:missing-interpolator",
       "-Ywarn-unused-import",
       "-Ywarn-unused",
-      "-Ywarn-dead-code",
       "-Yclosure-elim",
       "-Yinline",
       "-deprecation",
@@ -25,10 +24,6 @@ lazy val `mockito-sweetener` = (project in file(".")).
       "-unchecked",
       "-explaintypes",
       "-encoding", "UTF-8"
-    ),
-
-    scalacOptions in Test --= Seq(
-      "-Ywarn-dead-code"
     )
   ).
   settings(publishSettings: _*)
