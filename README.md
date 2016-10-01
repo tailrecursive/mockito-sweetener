@@ -15,7 +15,7 @@ SBT:
 
 ```
 libraryDependencies ++= Seq (
-  "com.github.jostly" %% "mockito-sweetener" % "0.2.0"
+  "com.github.jostly" %% "mockito-sweetener" % "0.3.0"
 )
 ```
 
@@ -25,7 +25,7 @@ Maven:
 <dependency>
   <groupId>com.github.jostly</groupId>
   <artifactId>mockito-sweetener_2.11</artifactId>
-  <version>0.2.0</version>
+  <version>0.3.0</version>
 </dependency>
 ```
 
@@ -106,7 +106,62 @@ val m = mock[List[String]]
 m(be > 0 and be < 10) returns "Single digit"
 ```
 
+## Capture arguments
+
+Mix in the `Capturing` trait to enable argument capturing in verifications. All use of argument captures
+must be wrapped in a `capturing { ... }` block:
+
+```scala
+capturing {
+  // do your captures and verifications here
+}
+```
+
+### Capture and retrieve
+
+You can capture arguments to a named argument captor using the `captured as "<label>"` argument matcher,
+which will store captured arguments under the supplied label. Retrieve the captured arguments
+using `captured.get[<your type>](<the label>)`:
+
+```scala
+val probe = mock[Probe]
+probe.single("foo")
+
+capturing {
+  there was one(probe).single(captured as "a")
+  captured.get[String]("a") shouldBe "foo"
+}
+```
+
+If there are multiple calls to your method, you can get all the captured values with
+the `captured.getAll` method.
+
+### Verify
+
+If all you want to do is run verfications on the captured arguments, use the
+`verified.by(partial function)` construct:
+
+```scala
+val probe = mock[Probe]
+probe.single("foo")
+
+capturing {
+  there was one(probe).single(verified[String] by {
+    case s =>
+     s shouldBe "foo"
+  })
+}
+```
+
+At the end of the `capturing { ... }` block, the supplied partial function will be evaulated for
+all captured values.
+
+
 ## Release notes
+
+### 0.3.0
+
+* Added argument capturing with the `Capturing` trait
 
 ### 0.2.0
 
@@ -118,15 +173,15 @@ m(be > 0 and be < 10) returns "Single digit"
 * Removed debug printouts
 * Slightly narrowed the specialization of `MockitoMatchers.is`
 
-## 0.1.2
+### 0.1.2
 
 * Added `zero` as an alias for `no` in call number verifications
   to fix a conflict with ScalaTest Matchers
 
-## 0.1.1
+### 0.1.1
 
 * Added specialization where necessary to properly handle cases of matching / stubbing primitives
 
-## 0.1.0
+### 0.1.0
 
 * Initial release
