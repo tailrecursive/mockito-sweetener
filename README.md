@@ -1,5 +1,8 @@
 # MockitoSweetener
 
+[![](https://travis-ci.org/jostly/mockito-sweetener.svg?branch=master)](https://travis-ci.org/jostly/mockito-sweetener/builds)
+
+
 Like MockitoSugar for ScalaTest, but sweeter and with fewer calories.
 
 Inspired by the Mockito DSL in Specs2, adapted for use with ScalaTest
