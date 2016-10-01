@@ -2,8 +2,6 @@ package com.github.jostly.scalatest.mock.mockito
 
 import org.mockito.{Mockito => M}
 
-import scala.language.implicitConversions
-
 trait OrderedVerifications {
 
   trait Order

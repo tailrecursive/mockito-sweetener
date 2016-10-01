@@ -1,73 +1,63 @@
+lazy val `mockito-sweetener` = (project in file(".")).
+  enablePlugins(GitVersioning, GitBranchPrompt).
+  settings(
+    name := "mockito-sweetener",
+    organization := "com.github.jostly",
+    scalaVersion := "2.11.8",
 
-name := "mockito-sweetener"
+    libraryDependencies ++= Seq(
+      "org.scala-lang.modules" %% "scala-xml" % "1.0.5",
+      "org.scala-lang" % "scala-reflect" % scalaVersion.value,
+      "org.scalatest" %% "scalatest" % "3.0.0" % "optional",
+      "org.mockito" % "mockito-all" % "1.10.19" % "optional"
+    ),
 
-organization := "com.github.jostly"
+    scalacOptions ++= Seq(
+      "-Xfatal-warnings",
+      "-Xlint:missing-interpolator",
+      "-Ywarn-unused-import",
+      "-Ywarn-unused",
+      "-Ywarn-dead-code",
+      "-Yclosure-elim",
+      "-Yinline",
+      "-deprecation",
+      "-feature",
+      "-unchecked",
+      "-explaintypes",
+      "-encoding", "UTF-8"
+    ),
 
-version := "0.2.0"
+    scalacOptions in Test --= Seq(
+      "-Ywarn-dead-code"
+    )
+  ).
+  settings(publishSettings: _*)
 
-homepage := Some(url("https://github.com/jostly/mockito-sweetener"))
+lazy val githubRepo = "jostly/mockito-sweetener"
 
-startYear := Some(2016)
-
-licenses := Seq(
-  ("Unlicense", url("http://unlicense.org"))
+lazy val publishSettings = Seq(
+  homepage := Some(url(s"https://github.com/$githubRepo")),
+  startYear := Some(2016),
+  licenses := Seq(("Unlicense", url("http://unlicense.org"))),
+  scmInfo := Some(
+    ScmInfo(
+      url(s"https://github.com/$githubRepo"),
+      s"scm:git:https://github.com/$githubRepo.git",
+      Some(s"scm:git:git@github.com:$githubRepo.git")
+    )
+  ),
+  bintrayVcsUrl := Some(s"scm:git:git@github.com:$githubRepo.git"),
+  bintrayCredentialsFile := file(".credentials"),
+  publishMavenStyle := true,
+  publishArtifact in Test := false,
+  pomIncludeRepository := { _ => false },
+  pomExtra := <developers>
+    <developer>
+      <id>jostly</id>
+      <name>Johan Östling</name>
+      <url>https://github.com/jostly</url>
+    </developer>
+  </developers>
 )
-
-//bintrayReleaseOnPublish in ThisBuild := false
-
-scmInfo := Some(
-  ScmInfo(
-    url("https://github.com/jostly/mockito-sweetener"),
-    "scm:git:https://github.com/jostly/mockito-sweetener.git",
-    Some("scm:git:git@github.com:jostly/mockito-sweetener.git")
-  )
-)
-
-bintrayVcsUrl := Some("scm:git:git@github.com:jostly/mockito-sweetener.git")
-
-/* scala versions and options */
-scalaVersion := "2.11.8"
-
-scalacOptions ++= Seq(
-  "-deprecation",
-  "-unchecked",
-  "-encoding", "UTF-8"
-  // "-Xcheckinit" // for debugging only, see https://github.com/paulp/scala-faq/wiki/Initialization-Order
-  // "-optimise"   // this option will slow your build
-)
-
-scalacOptions ++= Seq(
-  "-Yclosure-elim",
-  "-Yinline"
-)
-
-libraryDependencies ++= Seq (
-  "org.scala-lang.modules" %% "scala-xml" % "1.0.5",
-  "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-  "org.scalatest" %% "scalatest" % "3.0.0" % "optional",
-  "org.mockito" % "mockito-all" % "1.10.19" % "optional"
-)
-
-/* sbt behavior */
-logLevel in compile := Level.Warn
-
-traceLevel := 5
-
-offline := false
-
-/* publishing */
-publishMavenStyle := true
-
-publishArtifact in Test := false
-
-pomIncludeRepository := { _ => false }
-
-pomExtra := <developers>
-  <developer>
-    <id>jostly</id>
-    <name>Johan Östling</name>
-    <url>https://github.com/jostly</url>
-  </developer>
-</developers>
 
 initialCommands := "import com.github.jostly.scalatest.mock.MockitoSweetener._"

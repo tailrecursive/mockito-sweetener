@@ -1,0 +1,9 @@
+language: scala
+scala:
+- 2.11.8
+jdk:
+- oraclejdk8
+script: "./travis.sh"
+before_install:
+- openssl aes-256-cbc -K $encrypted_4a8ece9df6dd_key -iv $encrypted_4a8ece9df6dd_iv
+  -in .credentials.enc -out .credentials -d

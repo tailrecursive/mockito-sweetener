@@ -2,7 +2,6 @@ package com.github.jostly.scalatest.mock.mockito
 
 import com.github.jostly.scalatest.mock.MockitoSweetener
 import org.mockito.exceptions.verification.ArgumentsAreDifferent
-import org.scalactic.TripleEqualsSupport.Spread
 import org.scalatest.{Matchers, WordSpec}
 
 class MockitoMatchersSpec extends WordSpec with Matchers with MockitoSweetener {

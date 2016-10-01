@@ -3,8 +3,6 @@ package com.github.jostly.scalatest.mock.mockito
 import org.mockito.{Mockito => M}
 import org.mockito.stubbing.OngoingStubbing
 
-import scala.language.implicitConversions
-
 trait MockitoExpectations {
 
   implicit class Returns[@specialized(Specializable.Primitives) T](m: => T) {

@@ -81,7 +81,6 @@ class MockitoExpectationsSpec extends WordSpec with Matchers with MockitoSweeten
       }
       "specify expected arguments with matchers" in {
         val probe = mock[Probe]
-        val somesuch = List()
 
         probe.parameter(any[Set[_]]) returns "A Set"
         probe.parameter(any[List[_]]) returns "A List"
