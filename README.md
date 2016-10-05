@@ -156,8 +156,28 @@ capturing {
 At the end of the `capturing { ... }` block, the supplied partial function will be evaulated for
 all captured values.
 
+## Troubleshooting
+
+Mockito 2 requires at least Java 8 u45. If you see the following error when mocking generic types, 
+you most likely need to update your JDK:
+```
+[info]   org.mockito.exceptions.base.MockitoException: Mockito cannot mock this class: ...
+[info]
+[info] Mockito can only non-private & non-final classes.
+[info] If you're not sure why you're getting this error, please report to the mailing list.
+[info]
+[info] Java 8 early builds have bugs that were addressed in Java 1.8.0_45, please update your JDK!
+```
 
 ## Release notes
+
+### x.y.z 
+
+* Upgrade to Mockito 2.1.0
+* Mockito is no longer an optional dependency
+* Updated dependencies:
+    * Mockito `1.10.19` => `2.1.0`
+    * Scala XML `1.0.5` => `1.0.6`
 
 ### 0.3.0
 

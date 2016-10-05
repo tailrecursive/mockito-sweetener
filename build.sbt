@@ -6,10 +6,11 @@ lazy val `mockito-sweetener` = (project in file(".")).
     scalaVersion := "2.11.8",
 
     libraryDependencies ++= Seq(
-      "org.scala-lang.modules" %% "scala-xml" % "1.0.5",
+      "org.scala-lang.modules" %% "scala-xml" % "1.0.6",
       "org.scala-lang" % "scala-reflect" % scalaVersion.value,
       "org.scalatest" %% "scalatest" % "3.0.0" % "optional",
-      "org.mockito" % "mockito-all" % "1.10.19" % "optional"
+      "org.mockito" % "mockito-core" % "2.1.0",
+      "org.hamcrest" % "hamcrest-core" % "1.3"
     ),
 
     scalacOptions ++= Seq(
